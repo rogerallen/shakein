@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+English:400,400italic' rel='stylesheet' type='text/css'>
+    <style type='text/css'>
+      td.title {
+        font-family: 'IM Fell English', serif;
+        font-size: 28px;
+        #letter-spacing: 2px;
+        height: 64px;
+        width: 480px;
+        text-align: center;
+      }
+      td.quote {
+        font-family: 'IM Fell English', serif;
+        font-size: 20px;
+        font-style: italic;
+        height: 128px;
+        width: 480px;
+        text-align: center;
+      }
+      td.logo {
+        height: 256px;
+        width: 256px;
+      }
+      td {
+        font-family: 'IM Fell English', serif;
+        font-size: 18px;
+        height: 64px;
+        width: 480px;
+        text-align: center;
+      }
+      input
+      {
+        -moz-user-select: none;
+        background: #2A49A5;
+        border: 1px solid #082783;
+        box-shadow: 0 1px #4C6BC7 inset;
+        color: white;
+        padding: 5px 5px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 #082783;
+        font-family: 'IM Fell English', serif;
+        font-size: 18px;
+      }​
+    </style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34501360-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="logo" rowspan=5>
+          <img src="{{ STATIC_URL }}shakesin_logo.png" width="256" height="256" alt="Shakespeare Face" />
+        </td>
+        <td class="title">A Shakespearean Insult For Thee, {{me.first_name}}</td>
+      </tr>
+      <tr>
+        <td class="quote">{{quote}}</td>
+      <tr>
+      <tr>
+        <td>
+          Reload thy browser for an insult anew.
+          <form method="POST" action="{% url update_status %}"  >
+            <input type="hidden" name="quote" value="{{quote}}" />
+            <input type="hidden" name="access_token" value="{{access_token}}" />
+            <input type="submit" value="Maketh thine insult as thine status"/>
+          </form>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
