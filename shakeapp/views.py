@@ -1,6 +1,8 @@
 import facebook
 import random
 from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django_facebook.decorators import canvas_only
 
 Column_1 ="""artless bawdy beslubbering bootless churlish cockered
@@ -43,7 +45,8 @@ def home(request):
     quote = "Thou %s %s %s!"%((random.choice(Column_1),
                           random.choice(Column_2),
                           random.choice(Column_3)))
-    return render(request, 'home.html', {'me': me, 'access_token': access_token, 'quote': quote})
+    #return render(request, 'home.html', {'me': me, 'access_token': access_token, 'quote': quote})
+    return render_to_response('home.html', {'me': me, 'access_token': access_token, 'quote': quote}, context_instance=RequestContext(request))
 
 def update_status(request):
     quote = request.POST['quote']
@@ -51,4 +54,5 @@ def update_status(request):
     graph = facebook.GraphAPI(access_token)
     graph.put_object("me", "feed", message=quote)
     return render(request, 'all_done.html')
+
 

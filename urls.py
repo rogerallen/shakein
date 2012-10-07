@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     url(r'^$', 'shakein.shakeapp.views.home', name="home"),
     url(r'^update_status$', 'shakein.shakeapp.views.update_status', name="update_status"),
 
+    url(r'^social/', include('socialregistration.urls',
+                namespace = 'socialregistration')),
     # Examples:
     # url(r'^$', 'shakein.views.home', name='home'),
     # url(r'^shakein/', include('shakein.foo.urls')),

@@ -92,6 +92,11 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+# from http://django-socialregistration.readthedocs.org/en/latest/installation.html
+TEMPLATE_CONTEXT_PROESSORS = (
+     'django.core.context_processors.request',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
-    'django_facebook.middleware.FacebookMiddleware',
+    # ??? 'django_facebook.middleware.FacebookMiddleware',
 )
 
 ROOT_URLCONF = 'shakein.urls'
@@ -121,8 +126,16 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'django_facebook',
+    # ??? 'django_facebook',
+    'socialregistration',
+    'socialregistration.contrib.facebook',
     'shakein.shakeapp',
+)
+
+# per http://django-socialregistration.readthedocs.org/en/latest/contrib/facebook.html
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'socialregistration.contrib.facebook.auth.FacebookAuth',
 )
 
 # A sample logging configuration. The only tangible logging
